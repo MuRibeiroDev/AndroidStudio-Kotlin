@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.fragments.FirstFragmentDirections
+import com.example.fragments.SecondFragmentArgs
 import com.example.fragments.databinding.FragmentFirstBinding
 
 class FirstFragment : Fragment() {
@@ -34,8 +36,12 @@ class FirstFragment : Fragment() {
     }
 
     private fun initLinester() {
+        val name = "Murillo Ribeiro"
+
         binding.btnNext.setOnClickListener {
-            findNavController().navigate(R.id.action_firstFragment_to_secondFragment)
+            val action = FirstFragmentDirections
+                .actionFirstFragmentToSecondFragment(name)
+            findNavController().navigate(action)
         }
     }
 
