@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.fragments.databinding.ActivityMainBinding.inflate
 import com.example.fragments.databinding.FragmentSecondBinding
@@ -29,9 +31,21 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initLinesters()
+
         getExtra()
     }
 
+
+    private fun initLinesters() {
+        binding.btnBack.setOnClickListener {
+            parentFragmentManager.setFragmentResult(
+                "KEY",
+                bundleOf(Pair("KEY", "Anelisa"))
+            )
+            findNavController().popBackStack()
+        }
+    }
 
     private fun getExtra() {
         val name = args.nome
